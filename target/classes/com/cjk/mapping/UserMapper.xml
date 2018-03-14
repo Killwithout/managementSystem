@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjk.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.cjk.bean.UserInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="email" jdbcType="CHAR" property="email" />
+    <result column="phonenumber" jdbcType="CHAR" property="phonenumber" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_time_ip" jdbcType="VARCHAR" property="createTimeIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, password, email, phonenumber, status, create_time, create_time_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_t
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_t
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 登录 -->
+  <select id="getUserInfoBylogin" parameterType="com.cjk.bean.UserInfo" resultMap="BaseResultMap">
+  	 select id,user_name,password,email from user_t where user_name = #{userName} and password = #{password}
+  </select>
+  
+  <!-- 注册 -->
+  <insert id="getInsertUserInfo" parameterType="com.cjk.bean.UserInfo" >
+    insert into user_t (id, user_name, password, email, phonenumber, status, create_time, create_time_ip)
+    values (
+      #{id,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
+      #{email,jdbcType=CHAR}, #{phonenumber,jdbcType=CHAR}, #{status,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createTimeIp,jdbcType=VARCHAR}
+    )
+  </insert>
+  
+  <!-- 确认原始密码 -->
+  <select id="getCheckOldPass"  parameterType="com.cjk.bean.UserInfo"  resultMap="BaseResultMap">
+  	select id , user_name , password from user_t where user_name = #{userName} and password = #{password}
+  </select>
+  
+  <!-- 修改密码 -->
+  <update id="getChangePass" parameterType="com.cjk.bean.UserInfo">
+  	UPDATE user_t
+	SET password = #{password}
+	WHERE user_name = #{userName} 
+  </update>
+  
+  <insert id="insertSelective" parameterType="com.cjk.bean.UserInfo">
+    insert into user_t
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phonenumber != null">
+        phonenumber,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createTimeIp != null">
+        create_time_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=CHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTimeIp != null">
+        #{createTimeIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cjk.bean.UserInfo">
+    update user_t
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=CHAR},
+      </if>
+      <if test="phonenumber != null">
+        phonenumber = #{phonenumber,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTimeIp != null">
+        create_time_ip = #{createTimeIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cjk.bean.UserInfo">
+    update user_t
+    set user_name = #{userName,jdbcType=CHAR},
+      password = #{password,jdbcType=CHAR},
+      email = #{email,jdbcType=CHAR},
+      phonenumber = #{phonenumber,jdbcType=CHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_time_ip = #{createTimeIp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
