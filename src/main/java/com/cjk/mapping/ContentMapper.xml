@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjk.dao.ContentMapper">
+  <resultMap id="BaseResultMap" type="com.cjk.bean.ContentInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content_name" jdbcType="CHAR" property="contentName" />
+    <result column="content_image" jdbcType="CHAR" property="contentImage" />
+    <result column="content_type" jdbcType="CHAR" property="contentType" />
+    <result column="content_typeName" jdbcType="CHAR" property="contentTypeName" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, content_name, content_image, content_type, content_typeName, status, create_time
+  </sql>
+  <!-- 查询内容管理列表 -->
+  <select id="getContentInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cjk_content limit 10 offset 0;
+  </select> 
+  
+  <!-- 查询内容管理列表总记录数 -->
+  <select id="getPageSize" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(*) from cjk_content;
+  </select>
+</mapper>

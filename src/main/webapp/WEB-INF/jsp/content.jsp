@@ -4,143 +4,87 @@
 <c:set var="cjk" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="renderer" content="webkit">
-<title></title>
-<link rel="stylesheet" href="${cjk }/css/pintuer.css">
-<link rel="stylesheet" href="${cjk }/css/admin.css">
-<script src="${cjk }/js/jquery.js"></script>
-<script src="${cjk }/js/pintuer.js"></script>
-</head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="renderer" content="webkit">
+		<title>内容管理</title>
+		<link rel="stylesheet" href="${cjk }/css/pintuer.css">
+		<link rel="stylesheet" href="${cjk }/css/admin.css">
+		
+		
+		<link rel="stylesheet" type="text/css" href="${cjk }/css/reset.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="${cjk }/css/common.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="${cjk }/css/pagination.css" media="screen" />
+		
+		
+		<script src="${cjk }/js/jquery.js"></script>
+		<script src="${cjk }/js/pintuer.js"></script>
+		<!-- 分页相关 -->
+		<link rel="stylesheet" href="${cjk}/css/jquery.pagination.css" /><!-- 
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+		<script type="text/javascript" src="${cjk }/js/jquery-1.11.3.min.js"></script>
+		<script src="${cjk}/js/jquery.pagination.min.js"></script>
+		<script src="${cjk}/js/pagination.js"></script>
+		<!-- <style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-family: "微软雅黑";
+				background: #eee;
+			}
+			button {
+				display: inline-block;
+				padding: 6px 12px;
+				font-weight: 400;
+				line-height: 1.42857143;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				border: 1px solid transparent;
+				border-radius: 4px;
+				border-color: #28a4c9;
+				color: #fff;
+				background-color: #5bc0de;
+				margin: 20px 20px 0 0;
+			}
+			
+			.box {
+				width: 60%;
+				margin: 0 auto;
+				height: 34px;
+				padding-bottom: 55px;
+				padding-top: 25px;
+			}
+			
+			.page {
+				width: 600px;
+			}
+			
+			.info {
+				width: 200px;
+				height: 34px;
+				line-height: 34px;
+			}
+			
+			.fl {
+				float: left;
+			}
+		</style> -->
+	</head>
 <body>
 <form method="post" action="" id="listform">
   <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
-    <div class="padding border-bottom">
-      <ul class="search" style="padding-left:10px;">
-        <li> <a class="button border-main icon-plus-square-o" href="add.html"> 添加内容</a> </li>
-        <li>搜索：</li>
-        <li>首页
-          <select name="s_ishome" class="input" onchange="changesearch()" style="width:60px; line-height:17px; display:inline-block">
-            <option value="">选择</option>
-            <option value="1">是</option>
-            <option value="0">否</option>
-          </select>
-          &nbsp;&nbsp;
-          推荐
-          <select name="s_isvouch" class="input" onchange="changesearch()"  style="width:60px; line-height:17px;display:inline-block">
-            <option value="">选择</option>
-            <option value="1">是</option>
-            <option value="0">否</option>
-          </select>
-          &nbsp;&nbsp;
-          置顶
-          <select name="s_istop" class="input" onchange="changesearch()"  style="width:60px; line-height:17px;display:inline-block">
-            <option value="">选择</option>
-            <option value="1">是</option>
-            <option value="0">否</option>
-          </select>
-        </li>
-        <if condition="$iscid eq 1">
-          <li>
-            <select name="cid" class="input" style="width:200px; line-height:17px;" onchange="changesearch()">
-              <option value="">请选择分类</option>
-              <option value="">产品分类</option>
-              <option value="">产品分类</option>
-              <option value="">产品分类</option>
-              <option value="">产品分类</option>
-            </select>
-          </li>
-        </if>
-        <li>
-          <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
-          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
-      </ul>
-    </div>
     <table class="table table-hover text-center">
-      <tr>
-        <th width="100" style="text-align:left; padding-left:20px;">ID</th>
-        <th width="10%">排序</th>
-        <th>图片</th>
-        <th>名称</th>
-        <th>属性</th>
-        <th>分类名称</th>
-        <th width="10%">更新时间</th>
-        <th width="310">操作</th>
-      </tr>
-      <volist name="list" id="vo">
-        <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
-           1</td>
-          <td><input type="text" name="sort[1]" value="1" style="width:50px; text-align:center; border:1px solid #ddd; padding:7px 0;" /></td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
-          <td>这是一套MUI后台精美管理系统，感谢您的支持</td>
-          <td><font color="#00CC99">首页</font></td>
-          <td>产品分类</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>
-   		 <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
-           1</td>
-          <td><input type="text" name="sort[1]" value="1" style="width:50px; text-align:center; border:1px solid #ddd; padding:7px 0;" /></td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
-          <td>这是一套MUI后台精美管理系统，感谢您的支持</td>
-          <td><font color="#00CC99">首页</font></td>
-          <td>产品分类</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>
-         <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
-           1</td>
-          <td><input type="text" name="sort[1]" value="1" style="width:50px; text-align:center; border:1px solid #ddd; padding:7px 0;" /></td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
-          <td>这是一套MUI后台精美管理系统，感谢您的支持</td>
-          <td><font color="#00CC99">首页</font></td>
-          <td>产品分类</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>
-         <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
-           1</td>
-          <td><input type="text" name="sort[1]" value="1" style="width:50px; text-align:center; border:1px solid #ddd; padding:7px 0;" /></td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
-          <td>这是一套MUI后台精美管理系统，感谢您的支持</td>
-          <td><font color="#00CC99">首页</font></td>
-          <td>产品分类</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>
-         <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
-           1</td>
-          <td><input type="text" name="sort[1]" value="1" style="width:50px; text-align:center; border:1px solid #ddd; padding:7px 0;" /></td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
-          <td>这是一套MUI后台精美管理系统，感谢您的支持</td>
-          <td><font color="#00CC99">首页</font></td>
-          <td>产品分类</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>
-         <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="" />
-           1</td>
-          <td><input type="text" name="sort[1]" value="1" style="width:50px; text-align:center; border:1px solid #ddd; padding:7px 0;" /></td>
-          <td width="10%"><img src="images/11.jpg" alt="" width="70" height="50" /></td>
-          <td>这是一套MUI后台精美管理系统，感谢您的支持</td>
-          <td><font color="#00CC99">首页</font></td>
-          <td>产品分类</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-main" href="add.html"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1,1)"><span class="icon-trash-o"></span> 删除</a> </div></td>
-        </tr>
-      <tr>
+     <tr>
         <td style="text-align:left; padding:19px 0;padding-left:20px;"><input type="checkbox" id="checkall"/>
-          全选 </td>
+                     全选 
+        </td>
         <td colspan="7" style="text-align:left;padding-left:20px;"><a href="javascript:void(0)" class="button border-red icon-trash-o" style="padding:5px 15px;" onclick="DelSelect()"> 删除</a> <a href="javascript:void(0)" style="padding:5px 15px; margin:0 10px;" class="button border-blue icon-edit" onclick="sorts()"> 排序</a> 操作：
           <select name="ishome" style="padding:5px 15px; border:1px solid #ddd;" onchange="changeishome(this)">
             <option value="">首页</option>
@@ -158,7 +102,6 @@
             <option value="0">否</option>
           </select>
           &nbsp;&nbsp;&nbsp;
-          
           移动到：
           <select name="movecid" style="padding:5px 15px; border:1px solid #ddd;" onchange="changecate(this)">
             <option value="">请选择分类</option>
@@ -175,14 +118,90 @@
             <option value="20">复制20条</option>
           </select></td>
       </tr>
+      <tr style="border-top: 2px solid #ddd;">
+        <th width="100" style="text-align:left; padding-left:20px;">选项</th>
+        <th width="10%">序号</th>
+        <th>图片</th>
+        <th>名称</th>
+        <th>属性</th>
+        <th>分类名称</th>
+        <th width="10%">更新时间</th>
+        <th width="310">操作</th>
+      </tr>
+      <tbody name="list" id="vo">
+       
+        </tbody>
       <tr>
-        <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+      	<td colspan="8">
+      		<!-- <div class="box">
+				<div id="pagination1" class="page fl">
+				</div>
+			</div> -->
+			<div class="zfxxbj">
+			<div class="zfxx">
+			<div class="zfxx-nr clearfix">
+			<div class="zfxx-yr">
+				<!-- 分页 -->
+				<div id="pageContent" class="M-box4" style="position: absolute;left: 50%;margin-bottom:50px;">
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>
+      	</td>
       </tr>
     </table>
   </div>
 </form>
+		
 <script type="text/javascript">
+/* //加载页面
+$(function() { 
+	var pageCount = 0;
+	$.ajax({
+		url: "/content/pageSize",
+		type: "POST",
+		success: function(data){
+			var pageCount = data;
+			cjkTest(1,pageCount);
+		}
+	});
+});
 
+function cjkTest(currentPage , pageCount){
+	$("#pagination1").pagination({
+		currentPage: currentPage,//当前页
+		pageSize: 10,//每页显示的条数
+		totalPage: pageCount/10,//总页数/10 = 页数
+		callback: function(current) {
+			$.ajax({   
+                url: "/content/contentList",
+                type: "POST",  
+                data: JSON.stringify({"current":current, "pageSize":10}),
+                contentType : "application/json",
+                dataType : "json",
+                success: function(data) {
+                	var content = data;
+        			var tBody = $("#vo");
+        			for(var i=0; i<content.length; i++){
+        				var cjk = $("<tr><td style='text-align:left; padding-left:20px;'>"+
+        					"<input type='checkbox' name='id[]' value=''/>"+
+        					"</td><td>"+content[i].id+
+        					"</td><td>"+"<img src="+content[i].contentImage+" width='70' height='50'/>"+
+        					"</td><td>"+content[i].contentName+
+        					"</td><td><font color='#00CC99'>"+content[i].contentType+
+        					"</td><td>"+content[i].contentTypeName+
+        					"</td><td>"+content[i].createTime.substring(0,19)+
+        					"</td><td>"+"<div class='button-group'> <a class='button border-main' href='#'> <span class='icon-edit'></span> 修改 </a> <a class='button border-red' href='javascript:void(0)' onclick='return del(1,1,1)'> <span class='icon-trash-o'></span> 删除 </a></div>"+
+        					"</td></tr>")
+        				tBody.append(cjk);
+        			}
+                }  
+           }); 
+		}
+	});
+}
+ */
 //搜索
 function changesearch(){	
 		

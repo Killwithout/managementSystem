@@ -8,7 +8,7 @@ $(function() {
 	});
 	// 登录页面的 注册按钮
 	$('#registerPage').click(function() {
-		location.href = "../page/registerPage";
+		location.href = "../index/registerPage";
 	});
 	// 回车事件
 	$('#username, #password').keypress(function(event) {
@@ -36,7 +36,7 @@ function login() {
 		success : function(data) {
 			var result = data;
 			if (result.code == 200) {
-				location.href = "../page/index";
+				location.href = "../index/home";
 			} else {
 				if(result.code == -200){
 					alert(result.result);//用户名或密码

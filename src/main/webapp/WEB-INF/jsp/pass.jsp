@@ -14,40 +14,42 @@
 <script src="${cjk }/js/jquery.js"></script>
 <script src="${cjk }/js/pintuer.js"></script>
 <script src="${cjk }/js/controller.js"></script>
+
 </head>
 <body>
 <div class="panel admin-panel">
   <div class="panel-head"><strong><span class="icon-key"></span> &nbsp;修改密码界面</strong></div>
-  <div class="body-content">
+  <div class="body-content" style="width:70%; margin:0 auto; padding-left:100px;">
     <form method="post" class="form-x" id="formPass">
       <div class="form-group">
         <div class="labe">
-          	   <span style="font-size:18px;padding-left:20px;">当前登录的帐号:&nbsp;&nbsp;<%=session.getAttribute("names") %></span>
+       	   <span style="font-size:18px;padding-left:25%;">当前登录的帐号:
+       	   		&nbsp;&nbsp;<%=session.getAttribute("names") %>
+       	   	</span>
         </div>
       </div>     
-      <center> 
       <div class="form-group">
-        <div class="label">
+        <div class="label" style="width:180px;position:absolute;">
           <label for="sitename">原始密码：</label>
         </div>
         <div class="field">
-          <input type="password" class="input w50" id="mpass" name="mpass" size="50" placeholder="请输入原始密码" data-validate="required:请输入原始密码" />       
+          <input type="password" class="input w50" id="mpass" name="mpass" size="50" placeholder="请输入原始密码" data-validate="required:请输入原始密码" style="width:35%;margin-left:180px;"/>       
         </div>
       </div>      
       <div class="form-group">
-        <div class="label">
-          <label for="sitename">新密码：</label>
+        <div class="label" style="width:180px;position:absolute;">
+          <label for="sitename" style="padding-left:25px;">新密码：</label>
         </div>
         <div class="field">
-          <input type="password" class="input w50" name="newpass" size="50" placeholder="请输入新密码" data-validate="required:请输入新密码,length#>=5:新密码不能小于5位" />         
+          <input type="password" class="input w50" name="newpass" size="50" placeholder="请输入新密码" data-validate="required:请输入新密码,length#>=5:新密码不能小于5位" style="width:35%;margin-left:180px;"/>         
         </div>
       </div>
       <div class="form-group">
-        <div class="label">
+        <div class="label" style="width:180px;position:absolute;">
           <label for="sitename">确认新密码：</label>
         </div>
         <div class="field">
-          <input type="password" class="input w50" name="renewpass" size="50" placeholder="请再次输入新密码" data-validate="required:请再次输入新密码,repeat#newpass:两次输入的密码不一致" />          
+          <input type="password" class="input w50" name="renewpass" size="50" placeholder="请再次输入新密码" data-validate="required:请再次输入新密码,repeat#newpass:两次输入的密码不一致" style="width:35%;margin-left:180px;"/>          
         </div>
       </div>
       
@@ -55,11 +57,12 @@
         <div class="label">
           <label></label>
         </div>
-        <div class="field">
+        <div class="field" style="padding-left:22%;">
           <button class="button bg-main icon-check-square-o" type="button" id="changePass"> 提交</button>   
         </div>
       </div>      
     </form>
   </div>
 </div>
-</body></html>
+</body>
+</html>
