@@ -11,6 +11,6 @@
 
 上图看效果：
 
-!["请刷新"](https://github.com/Killwithout/managementSystem/tree/master/image/1.jpg)
-!["请刷新"](https://github.com/Killwithout/managementSystem/tree/master/image/2.png)
-!["请刷新"](https://github.com/Killwithout/managementSystem/tree/master/image/3.png)
+!["查看登录界面"](https://github.com/Killwithout/managementSystem/tree/master/image/1.jpg)
+!["查看上传界面"](https://github.com/Killwithout/managementSystem/tree/master/image/2.png)
+!["查看内容管理界面"](https://github.com/Killwithout/managementSystem/tree/master/image/3.png)
