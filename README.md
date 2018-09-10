@@ -1,5 +1,5 @@
 "# managementSystem"   
-这是一套后台管理系统的java小项目，里面涵盖了各个功能点  
+这是一套后台管理系统的java小项目，里面涵盖了各个功能点，相关内容和一些知识点，抽时间边学边完善
 前台技术：html + jquery + ajax + css + frame   
 后端框架：Spring + springMVC + Mybatis  
 目前实现了登录功能和登陆后的页面的一些跳转，在登录的功能中添加了一个图片验证码，登录密码利用MD5加密,  
