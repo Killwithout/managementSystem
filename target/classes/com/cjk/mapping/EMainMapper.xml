@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjk.dao.EMailMapper">
+  <resultMap id="BaseResultMap" type="com.cjk.bean.UserMail">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="userName" jdbcType="CHAR" property="username" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="email" jdbcType="CHAR" property="email" />
+    <result column="nickName" jdbcType="CHAR" property="nickname" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, username, password, email, nickname, state, code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_mail
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_mail
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="registe" parameterType="com.cjk.bean.UserMail" >
+    insert into user_mail (uid, username, password, email, nickname, state, code)
+    values (
+      #{uid,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
+      #{email,jdbcType=CHAR}, #{nickName,jdbcType=CHAR}, #{state,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}
+    )
+  </insert>
+  <!-- 邮箱 下发邮件  -->
+  <select id="findByCode"  parameterType="java.lang.String"  resultType="com.cjk.bean.UserMail">
+ 	select * from user_mail where code = #{code};
+  </select>
+  <!-- �?活邮�? -->
+ <update id="update" parameterType="com.cjk.bean.UserMail" >
+    UPDATE user_mail
+	SET `state` = 1,`code` = ''
+	WHERE uid = #{uid};
+ </update>
+</mapper>

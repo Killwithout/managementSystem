@@ -33,7 +33,6 @@ import com.cjk.util.VerificationCode;
 /**
  * 用户  登录  注册  验证码  请求的处理
  * @author admin
- *
  */
 @Controller
 @RequestMapping(value = "/sso")

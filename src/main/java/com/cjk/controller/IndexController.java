@@ -1,15 +1,15 @@
 package com.cjk.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 /**
  * IndexController 主要实现 页面跳转
  * @author admin
- *
  */
 @Controller
 @RequestMapping(value = "/index" )
@@ -74,20 +74,29 @@ public class IndexController {
 	}
 	
 	/**
-	 * onePage 单页管理 界面 
+	 * mobileMessage 短信验证 界面 
 	 */
-	@RequestMapping(value = "/onePage" , method = RequestMethod.GET)
+	@RequestMapping(value = "/mobileMessage" , method = RequestMethod.GET)
 	public String IndexPageOnepage(HttpServletRequest request){
-		return "onePage";
+		return "mobileMessage";
 	}
 	
 	/**
-	 * adv 首页轮播 界面 
+	 * emailMessage 邮箱验证 界面 
 	 */
-	@RequestMapping(value = "/adv" , method = RequestMethod.GET)
+	@RequestMapping(value = "/emailMessage" , method = RequestMethod.GET)
 	public String IndexPageAdv(HttpServletRequest request){
-		return "adv";
+		return "emailMessage";
 	}
+	
+	/**
+	 * QRcode 二维码 界面 
+	 */
+	@RequestMapping(value = "/QRcode" , method = RequestMethod.GET)
+	public String IndexImgMessage(HttpServletRequest request){
+		return "QRcode";
+	}
+	
 	
 	/**
 	 * book 留言管理  界面 
@@ -119,6 +128,16 @@ public class IndexController {
 	@RequestMapping(value = "/addContent" , method = RequestMethod.GET)
 	public String IndexPageAddContent(HttpServletRequest request){
 		return "addContent";
+	}
+	/**
+	 * updateContent 修改内容 界面
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/updateContent" , method = RequestMethod.GET)
+	public String IndexPageUpdateContent(int id , Model model){
+		model.addAttribute("id",id);
+		return "updateContent";
 	}
 	
 	/**

@@ -60,8 +60,4 @@ public class UserServiceImpl implements UserService{
 		return userMapper.getChangePass(userInfo);
 		
 	}
-
-	
-	
-
 }

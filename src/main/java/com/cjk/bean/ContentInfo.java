@@ -1,7 +1,11 @@
 package com.cjk.bean;
 
 import java.io.Serializable;
-
+/**
+ * 内容实体
+ * @author admin
+ *
+ */
 public class ContentInfo implements Serializable{
 	
 	private Integer id;

@@ -16,6 +16,11 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+/**
+ * 图片验证码
+ * @author admin
+ *
+ */
 public class VerificationCode {
 	
 	//使用到Algerian字体，只显示大写

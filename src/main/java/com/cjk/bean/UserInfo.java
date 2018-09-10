@@ -2,7 +2,11 @@ package com.cjk.bean;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * 用户实体
+ * @author admin
+ *
+ */
 public class UserInfo implements Serializable{
     /**
 	 * 

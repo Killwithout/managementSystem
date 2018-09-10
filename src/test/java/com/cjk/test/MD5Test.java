@@ -8,5 +8,10 @@ public class MD5Test {
 			System.out.println("大写："+md51);
 		String md52 = MD5Util.getMd5("123456");
 			System.out.println("小写："+md52);
+			
+		
+		String random = Math.round((Math.random()*9+1)*100000)+"";
+		System.out.println(random); 
+
 	}
 }

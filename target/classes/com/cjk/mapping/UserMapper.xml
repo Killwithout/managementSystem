@@ -3,7 +3,7 @@
 <mapper namespace="com.cjk.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.cjk.bean.UserInfo">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="userName" jdbcType="CHAR" property="userName" />
     <result column="password" jdbcType="CHAR" property="password" />
     <result column="email" jdbcType="CHAR" property="email" />
     <result column="phonenumber" jdbcType="CHAR" property="phonenumber" />

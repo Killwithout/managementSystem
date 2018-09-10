@@ -6,7 +6,6 @@ import com.cjk.bean.UserInfo;
  * dao 数据访问层
  * @author admin
  */
-
 public interface UserMapper {
 	
 	/**
@@ -14,7 +13,6 @@ public interface UserMapper {
 	 * @param userInfo
 	 * @return
 	 */
-
 	public int getInsertUserInfo(UserInfo userInfo);
 	
 	/**
@@ -29,7 +27,6 @@ public interface UserMapper {
 	 * @param userInfo
 	 * @return
 	 */
-	
 	public UserInfo getCheckOldPass(UserInfo userInfo);
 	
 	/**

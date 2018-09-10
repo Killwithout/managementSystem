@@ -9,7 +9,7 @@ public interface UserService {
 	 * @author admin
 	 * @return
 	 */
-	public int getInsertUserInfo(UserInfo userInfo);
+	public int getInsertUserInfo(UserInfo userInfo) throws Exception; 
 	
 	 /**
 	  * 登录
@@ -17,14 +17,14 @@ public interface UserService {
 	  * @return
 	  */
 	
-	public UserInfo getUserInfoBylogin(UserInfo userInfo);
+	public UserInfo getUserInfoBylogin(UserInfo userInfo) throws Exception;
 	
 	/**
 	 * 修改密码前确认旧密码是否正确
 	 * @param oldPass
 	 * @return
 	 */
-	public UserInfo getCheckOldPass(UserInfo userInfo);
+	public UserInfo getCheckOldPass(UserInfo userInfo) throws Exception;
 	
 	/**
 	 * 修改密码
@@ -34,8 +34,5 @@ public interface UserService {
 	 * @return
 	 */
 	
-	public int getChangePass(UserInfo userInfo);
-	
-
-
+	public int getChangePass(UserInfo userInfo) throws Exception;
 }
