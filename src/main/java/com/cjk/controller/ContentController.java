@@ -38,7 +38,7 @@ public class ContentController {
 	@RequestMapping(value = "/contentList" ,  method = RequestMethod.POST )
 	@ResponseBody
 	public List<ContentInfo> contentIndex(@RequestParam(value="current") Integer current){
-		List<ContentInfo> list = new ArrayList<>();
+		List<ContentInfo> list = new ArrayList<ContentInfo>();
 		try{
 			list = contentService.getContentInfo(current);			
 		}catch(Exception e){
@@ -130,7 +130,7 @@ public class ContentController {
 	@ResponseBody
 	public Map<String, Object> uploadFile(HttpServletRequest request) throws IllegalStateException, IOException{
 		//定义返回的map
-		Map<String , Object> map = new HashMap<>();
+		Map<String , Object> map = new HashMap<String, Object>();
 		//将当前上下文初始化给 CommonsMultipartResolver
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
 		String path="";

@@ -14,7 +14,6 @@ public class UserMailServiceImpl implements UserMailService{
 	@Autowired
 	private EMailMapper userMailMapper;
 
-	@Override
 	public void registe(UserMail user) throws Exception {
 		//将数据存入数据库
 		userMailMapper.registe(user);
@@ -22,12 +21,10 @@ public class UserMailServiceImpl implements UserMailService{
 		MailUtils.sendMail(user.getEmail(), user.getCode());
 	}
 
-	@Override
 	public UserMail findByCode(String code) throws Exception {
 		return userMailMapper.findByCode(code);
 	}
 
-	@Override
 	public void update(UserMail user) throws Exception {
 		userMailMapper.update(user);
 	}

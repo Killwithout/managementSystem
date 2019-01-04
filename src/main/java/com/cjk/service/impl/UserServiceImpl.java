@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService{
 	 * @author admin
 	 * @return
 	 */
-	@Override
 	public int getInsertUserInfo(UserInfo userInfo) {
 		
 		return userMapper.getInsertUserInfo(userInfo);
@@ -30,7 +29,6 @@ public class UserServiceImpl implements UserService{
 	 * @author admin
 	 * @return
 	 */
-	@Override
 	public UserInfo getUserInfoBylogin(UserInfo userInfo) {
 
 		return userMapper.getUserInfoBylogin(userInfo);
@@ -42,7 +40,6 @@ public class UserServiceImpl implements UserService{
 	 * @author admin
 	 * @return
 	 */
-	@Override
 	public UserInfo getCheckOldPass(UserInfo userInfo) {
 
 		return userMapper.getCheckOldPass(userInfo);
@@ -54,7 +51,6 @@ public class UserServiceImpl implements UserService{
 	 * @author admin
 	 * @return
 	 */
-	@Override
 	public int getChangePass(UserInfo userInfo) {
 		
 		return userMapper.getChangePass(userInfo);
