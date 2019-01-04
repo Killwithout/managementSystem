@@ -36,7 +36,7 @@
   <select id="findByCode"  parameterType="java.lang.String"  resultType="com.cjk.bean.UserMail">
  	select * from user_mail where code = #{code};
   </select>
-  <!-- �?活邮�? -->
+  <!-- 激活邮箱 -->
  <update id="update" parameterType="com.cjk.bean.UserMail" >
     UPDATE user_mail
 	SET `state` = 1,`code` = ''
