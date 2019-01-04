@@ -140,14 +140,14 @@ public class UserController {
 			}
 			//验证码
 			//账号密码不能为空验证之后，我们就要看验证码，验证码存储在session中我们只是将输入的验证码和session中的验证码做对比验证即可
-			String inputVerifyCode = request.getParameter("code");
+			String inVerCode = request.getParameter("code");
 //				System.out.println("-----输入的验证码-----为:"+inputVerifyCode);
 			HttpSession session = request.getSession();
 			String verCode = (String) session.getAttribute("verCode");
 			session.setAttribute("names", names);
 //				System.out.println("session中存储的验证码值:"+verCode);
 				
-			if(!(inputVerifyCode != null  && inputVerifyCode.equals(verCode))){
+			if(!(inVerCode != null  && (inVerCode.toLowerCase().equals(verCode) || inVerCode.toUpperCase().equals(verCode) ))){
 				resultMap.put("code",DemoCode.REQUEST_VERCODE);
 				resultMap.put("result", "验证码错误");
 				return jsonMapper.writeValueAsString(resultMap);
@@ -202,7 +202,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		//删除以前的
 		session.removeAttribute("verCode");
-		session.setAttribute("verCode", verifyCode.toLowerCase());
+		session.setAttribute("verCode", verifyCode);
 		//System.out.println(session.getAttribute(verifyCode)+"------------------------------------");
 		//生成图片并设置图片大小
 		int w = 115 , h = 43;
