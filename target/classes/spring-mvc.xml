@@ -42,6 +42,24 @@
     <mvc:resources location="/js/" mapping="/js/**"/> 
     <mvc:resources location="/css/" mapping="/css/**"/> 
     <mvc:resources location="/images/" mapping="/images/**"/> 
+    
+    <!-- 自定义拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- path 可以是/a/b,也可以是/a/b/* 这样就拦截了前缀是/a/b的controller -->
+			<mvc:mapping path="/**"/>
+			<!-- 设置不拦截的路径 -->
+			<mvc:exclude-mapping path="/sso/authImage"/>
+			<mvc:exclude-mapping path="/sso/login"/>
+			<mvc:exclude-mapping path="/sso/register"/>
+			<mvc:exclude-mapping path="index/registerPage"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/images/**"/>
+			<!-- 定义在MVC：interceptor下面的表示是对特定的请求才进行拦截的 -->
+			<bean class="com.cjk.interceptor.UserInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
     <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
     <bean

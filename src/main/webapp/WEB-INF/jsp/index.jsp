@@ -38,17 +38,18 @@
 	  		退出登录
 		</a> 
 	</div>
-  <!-- 欢迎 *** 登录 -->
+  <!-- 欢迎 ***登录 -->
   <div class="head-p" style="background:url(${cjk}/images/userbg.png) no-repeat;width:200px;height:30px;line-height:30px;vertical-align:middle;text-align:center;">
-  	<span style="display:inline-block;padding-right:10px;background:url(${cjk}/images/user.png) no-repeat 15px 10px;line-height:30px;font-size:14px;color:#b8ceda;padding-left:20px;padding-left:35px;">
-  	欢迎 &nbsp;<%=request.getSession().getAttribute("names") %>
+  	<span style="float:left;display:inline-block;padding-right:10px;background:url(${cjk}/images/user.png) no-repeat 15px 10px;line-height:30px;font-size:14px;color:#b8ceda;padding-left:20px;padding-left:35px;">
+  	欢迎  <span style="color:#fec;"><%=request.getSession().getAttribute("names") %></span>
+  	<i style="margin-right:5px;font-style:normal;line-height:30px;font-size:14px;color:#b8ceda;">
+	  	消息
+	  	<b style="padding-left:5px;padding-right:5px;width:20px;height:18px;background:url(${cjk}/images/msg.png);text-align:center;font-weight:normal;color:#fff;font-size:14px;margin-right:13px;line-height:18px;">
+	     5
+	    </b>
+	  	</i>
   	</span>
-  	<i style="display:inline-block;margin-right:5px;font-style:normal;line-height:30px;font-size:14px;color:#b8ceda;">
-  	消息
-  	</i>
-  	<b style="display:inline-block;width:20px;height:18px;background:url(${cjk}/images/msg.png);text-align:center;font-weight:normal;color:#fff;font-size:14px;margin-right:13px;line-height:18px;">
-     5
-    </b>
+	  	
   </div>
   
 </div>

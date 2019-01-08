@@ -36,6 +36,11 @@
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
     </listener>
     
+    <!-- 设置session的过期时间 -->
+    <session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
     <!-- Spring MVC servlet -->
     <servlet>
         <servlet-name>SpringMVC</servlet-name>

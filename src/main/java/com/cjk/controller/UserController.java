@@ -116,7 +116,7 @@ public class UserController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/login" , method = RequestMethod.POST , produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/login" , method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String Login(HttpServletRequest request , HttpServletResponse response) throws Exception{
 		Map<String , Object > resultMap = new HashMap<String , Object>();
