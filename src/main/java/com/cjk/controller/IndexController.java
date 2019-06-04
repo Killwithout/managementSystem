@@ -147,4 +147,12 @@ public class IndexController {
 	public String IndexPageCate(HttpServletRequest request){
 		return "cate";
 	}
+	/**
+	 * 流程管理---工作流
+	 * @return
+	 */
+	@RequestMapping(value="/activity",method = RequestMethod.GET)
+	public String IndexPageActivity() {
+		return "activity";
+	}
 }
