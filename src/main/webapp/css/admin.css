@@ -17,7 +17,7 @@ ul,li{ list-style-type:none;}
 .head-l{ float:left; margin-top:17px; margin-left:15px; }
 .head-l .button{ padding:8px 15px;}
 .head-l .bg-blue:hover{ background-color:#03b6fd;}
-.head-p{ margin-top:22px;margin-right:128px;border:0px solid red;float:right;font-size:14px;
+.head-p{ margin-top:22px;margin-right:12px;border:0px solid red;float:right;font-size:14px;
 		 color:white;z-index:99999;
 		}
 
