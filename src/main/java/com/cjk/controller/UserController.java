@@ -144,9 +144,7 @@ public class UserController {
 //				System.out.println("-----输入的验证码-----为:"+inputVerifyCode);
 			HttpSession session = request.getSession();
 			String verCode = (String) session.getAttribute("verCode");
-			session.setAttribute("names", names);
 //				System.out.println("session中存储的验证码值:"+verCode);
-				
 			if(!(inVerCode != null  && (inVerCode.toLowerCase().equals(verCode) || inVerCode.toUpperCase().equals(verCode) ))){
 				resultMap.put("code",DemoCode.REQUEST_VERCODE);
 				resultMap.put("result", "验证码错误");
@@ -159,7 +157,6 @@ public class UserController {
 			UserInfo userInfo = new UserInfo();
 			userInfo.setUserName(names);
 			userInfo.setPassword(passwords);
-			
 			userInfo = userService.getUserInfoBylogin(userInfo);
 			
 			if(null == userInfo){
@@ -170,6 +167,7 @@ public class UserController {
 			
 			resultMap.put("code", DemoCode.REQUEST_SUCCESS);
 			resultMap.put("result", "登录成功");
+			session.setAttribute("names", names);
 			return jsonMapper.writeValueAsString(resultMap);
 			
 		}catch (Exception e) {
