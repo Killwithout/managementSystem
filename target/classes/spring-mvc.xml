@@ -49,10 +49,8 @@
 			<!-- path 可以是/a/b,也可以是/a/b/* 这样就拦截了前缀是/a/b的controller -->
 			<mvc:mapping path="/**"/>
 			<!-- 设置不拦截的路径 -->
-			<mvc:exclude-mapping path="/sso/authImage"/>
-			<mvc:exclude-mapping path="/sso/login"/>
-			<mvc:exclude-mapping path="/sso/register"/>
-			<mvc:exclude-mapping path="index/registerPage"/>
+			<mvc:exclude-mapping path="/sso/*"/>
+			<!-- <mvc:exclude-mapping path="/index/**"/> -->
 			<mvc:exclude-mapping path="/js/**"/>
 			<mvc:exclude-mapping path="/css/**"/>
 			<mvc:exclude-mapping path="/images/**"/>
