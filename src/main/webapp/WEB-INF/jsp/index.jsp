@@ -45,7 +45,7 @@
   	<i style="margin-right:5px;font-style:normal;line-height:30px;font-size:14px;color:#b8ceda;">
 	  	消息
 	  	<b style="padding-left:5px;padding-right:5px;width:20px;height:18px;background:url(${cjk}/images/msg.png);text-align:center;font-weight:normal;color:#fff;font-size:14px;margin-right:13px;line-height:18px;">
-	     5
+	     3
 	    </b>
 	  	</i>
   	</span>
@@ -65,6 +65,10 @@
     <li><a href="book" target="right"><span class="icon-caret-right"></span>留言管理</a></li>     
     <li><a href="column" target="right"><span class="icon-caret-right"></span>栏目管理</a></li>
   </ul>   
+  <h2><span class="icon-pencil-square-o"></span>流程管理</h2>
+  <ul>
+    <li><a href="activity" target="right"><span class="icon-caret-right"></span>工作流</a></li>
+  </ul>  
   <h2><span class="icon-pencil-square-o"></span>栏目管理</h2>
   <ul>
     

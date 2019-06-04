@@ -41,7 +41,7 @@ html,body {
 	height:100%;
 	/*background-image:url(https://openclipart.org/image/2400px/svg_to_png/250847/Trees-Landscape-Silhouette.png);
 	*/
-background-image:url('http://www.jq22.com/css/img/xkbg.png');
+background-image:/* url('http://www.jq22.com/css/img/xkbg.png'); */
 	background-size:1000px 250px;
 	background-repeat:repeat-x;
 	background-position:center bottom;
