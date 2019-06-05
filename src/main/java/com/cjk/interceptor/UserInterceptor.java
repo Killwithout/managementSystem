@@ -23,8 +23,14 @@ public class UserInterceptor implements HandlerInterceptor{
 			session.setAttribute("names", userName);
 			return true;
 		}
-		request.getRequestDispatcher("login.jsp").forward(request, response);
-		//response.sendRedirect(request.getContextPath()+"/login");
+		
+		String url = request.getScheme() +"://" + request.getServerName()  
+        + ":" +request.getServerPort() 
+        + request.getServletPath();
+		System.out.println(url);
+		
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		//response.sendRedirect(request.getContextPath());
 		return false;
 	}
 
